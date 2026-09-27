@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7f3">
+    <meta name="description" content="Axel Javier - Servicios digitales, proyectos, aplicaciones y licencias.">
+    <title>Axel Javier | Servicios Digitales</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#inicio">Saltar al contenido</a>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Axel<span>Javier</span></div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li class="audio-nav-item">
+                    <details class="audio-menu" id="audioMenu">
+                        <summary><span aria-hidden="true">♫</span> Audio <span class="audio-chevron" aria-hidden="true"></span></summary>
+                        <div class="audio-menu-panel">
+                            <label for="soundPreset">Ambiente</label>
+                            <select id="soundPreset">
+                                <option value="soft">Ambiente suave</option>
+                                <option value="pink">Ruido rosa</option>
+                                <option value="brown">Ruido profundo</option>
+                            </select>
+
+                            <button class="btn secondary sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+                                <span aria-hidden="true">♫</span> Activar sonido
+                            </button>
+
+                            <label for="soundVolume">Volumen <output id="soundVolumeValue" for="soundVolume">18%</output></label>
+                            <input id="soundVolume" type="range" min="0" max="100" value="18">
+                            <p id="soundStatus" aria-live="polite">Intentando iniciar el sonido ambiental…</p>
+                            <p class="audio-credit">Generado en este navegador, sin pistas de terceros.</p>
+                        </div>
+                    </details>
+                </li>
+            </ul>
+
+            <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+                <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- INICIO -->
+    <section id="inicio" class="hero">
+
+        <div class="hero-content">
+            <p class="saludo">¡Hola! Soy</p>
+
+            <h1>Axel <span>Javier</span></h1>
+
+            <h2>Servicios y soluciones digitales</h2>
+
+            <p>
+                Te ayudo a organizar y resolver necesidades digitales: desde preparar
+                trabajos y proyectos hasta instalar aplicaciones y configurar licencias
+                válidas. Antes de comenzar, revisamos los requisitos y acordamos el
+                alcance para que sepas qué incluye el servicio.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn primary">Ver servicios</a>
+                <a href="#contacto" class="btn secondary">Contáctame</a>
+            </div>
+        </div>
+
+        <figure class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Ordenador portátil en un espacio de trabajo digital" fetchpriority="high">
+            <figcaption><span class="visual-mark" aria-hidden="true"></span>Ideas claras. Soluciones útiles.</figcaption>
+        </figure>
+
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="section about">
+
+        <div class="section-title">
+            <p>Conóceme</p>
+            <h2>Sobre mí</h2>
+        </div>
+
+        <div class="about-content">
+
+            <div class="about-text">
+                <h3>Hola, soy Axel Javier 👋</h3>
+
+                <p>
+                    Me interesa la tecnología y cómo puede hacer más sencillas las tareas
+                    de todos los días. Escucho lo que necesitas y te ayudo a convertirlo
+                    en un trabajo, una configuración o una idea digital concreta.
+                </p>
+
+                <p>
+                    Puedo apoyarte con la estructura y presentación de trabajos digitales,
+                    la instalación inicial de aplicaciones, la configuración de licencias
+                    válidas y la planificación de proyectos digitales. El tipo de ayuda
+                    depende de los requisitos de cada caso.
+                </p>
+
+                <p>
+                    Mi forma de trabajar es sencilla: aclaramos el objetivo, revisamos los
+                    materiales o requisitos disponibles y confirmamos el resultado esperado
+                    antes de empezar. Así podemos mantener una comunicación clara durante
+                    el proceso.
+                </p>
+            </div>
+
+            <div class="about-info">
+                <div class="info-box">
+                    <span>💻</span>
+                    <h4>Creatividad</h4>
+                    <p>Organizo cada solicitud de acuerdo con su objetivo y sus requisitos.</p>
+                </div>
+
+                <div class="info-box">
+                    <span>⚙️</span>
+                    <h4>Tecnología</h4>
+                    <p>Reviso compatibilidad y pasos de configuración antes de instalar.</p>
+                </div>
+
+                <div class="info-box">
+                    <span>🚀</span>
+                    <h4>Proyectos</h4>
+                    <p>Defino contigo el alcance y los detalles de cada proyecto.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section services">
+
+        <div class="section-title">
+            <p>Lo que hago</p>
+            <h2>Mis Servicios</h2>
+        </div>
+
+        <div class="services-container">
+
+            <article class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Trabajos Digitales</h3>
+                <p>
+                    Apoyo con la organización, el contenido y la presentación visual de
+                    documentos y materiales digitales. Definimos el tema, el formato y las
+                    indicaciones que debe cumplir antes de comenzar.
+                </p>
+                <a href="#contacto">Solicitar servicio →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🔑</div>
+                <h3>Licencias</h3>
+                <p>
+                    Te ayudo a configurar licencias válidas siguiendo los métodos
+                    autorizados por cada proveedor. Revisamos los requisitos y la
+                    compatibilidad; la licencia debe provenir del proveedor o de un
+                    distribuidor autorizado.
+                </p>
+                <a href="#contacto">Solicitar servicio →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Instalación de Aplicaciones</h3>
+                <p>
+                    Instalación y configuración inicial de aplicaciones y programas,
+                    comprobando los requisitos del dispositivo y ajustando las opciones
+                    básicas para que puedas empezar a utilizarlos.
+                </p>
+                <a href="#contacto">Solicitar servicio →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Proyectos Digitales</h3>
+                <p>
+                    Convertimos tu idea en un plan claro: objetivo, contenido, funciones
+                    necesarias y resultado esperado. El alcance y los detalles se acuerdan
+                    contigo antes de iniciar el trabajo.
+                </p>
+                <a href="#contacto">Solicitar servicio →</a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section process">
+
+        <div class="section-title">
+            <p>¿Cómo trabajo?</p>
+            <h2>Proceso sencillo</h2>
+        </div>
+
+        <div class="process-container">
+
+            <div class="process-step">
+                <span>01</span>
+                <h3>Contáctame</h3>
+                <p>Cuéntame el objetivo, el servicio que buscas y cualquier requisito importante.</p>
+            </div>
+
+            <div class="process-step">
+                <span>02</span>
+                <h3>Analizamos</h3>
+                <p>Confirmamos el formato, los materiales disponibles, el alcance y el resultado esperado.</p>
+            </div>
+
+            <div class="process-step">
+                <span>03</span>
+                <h3>Trabajamos</h3>
+                <p>Avanzo con lo acordado y te mantengo al tanto si hace falta aclarar algún detalle.</p>
+            </div>
+
+            <div class="process-step">
+                <span>04</span>
+                <h3>Entrega</h3>
+                <p>Recibes el resultado acordado junto con las indicaciones necesarias para utilizarlo.</p>
+            </div>
+
+        </div>
+    </section>
+<!-- CONTACTO -->
+<section id="contacto" class="section contact">
+
+    <div class="section-title">
+        <p>Hablemos</p>
+        <h2>Contáctame</h2>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h3>¿Tienes un proyecto en mente?</h3>
+
+            <p>
+                Si tienes una consulta, incluye el servicio que buscas, el objetivo
+                y cualquier requisito importante. Puedes escribirme por correo o WhatsApp.
+            </p>
+
+            <!-- CORREO -->
+            <div class="contact-item">
+                <span>📧</span>
+                <div>
+                    <strong>Correo electrónico</strong>
+                    <a href="mailto:axrl.axeljavier8@gmail.com">
+                        axrl.axeljavier8@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- WHATSAPP -->
+            <div class="contact-item">
+                <span>📱</span>
+                <div>
+                    <strong>WhatsApp</strong>
+                    <a href="https://wa.me/18096675209" target="_blank" rel="noopener noreferrer">
+                        809-667-5209
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+            
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+            <h3>Axel<span>Javier</span></h3>
+
+            <p>
+                Servicios y soluciones digitales.
+            </p>
+
+            <div class="footer-socials">
+                <a href="mailto:axrl.axeljavier8@gmail.com">Correo electrónico</a>
+                <a href="https://wa.me/18096675209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+
+            <p class="copyright">
+                © <span id="year"></span> Axel Javier. Todos los derechos reservados. Sonidos generados en el navegador, sin grabaciones ni música de terceros.
+            </p>
+        </div>
+
+    </footer>
+
+</body>
+</html>
