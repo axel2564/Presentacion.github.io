@@ -1,0 +1,23 @@
+(() => {
+  "use strict";
+  const config = window.AXEL_SITE_CONFIG || { whatsappNumber: "", email: "" };
+  const menuButton = document.querySelector(".menu-toggle"), nav = document.querySelector("#main-nav");
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => { const open=menuButton.getAttribute("aria-expanded")!=="true"; menuButton.setAttribute("aria-expanded",String(open));menuButton.setAttribute("aria-label",open?"Cerrar menú":"Abrir menú");nav.classList.toggle("open",open); });
+    nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menuButton.setAttribute("aria-expanded","false");menuButton.setAttribute("aria-label","Abrir menú");}));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"){nav.classList.remove("open");menuButton.setAttribute("aria-expanded","false");}});
+  }
+  const progress=document.querySelector(".scroll-progress"), updateProgress=()=>{if(!progress)return;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=`${max>0?(scrollY/max)*100:0}%`;};
+  addEventListener("scroll",updateProgress,{passive:true});updateProgress();
+  const reveals=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target);}}),{threshold:.12,rootMargin:"0px 0px -25px 0px"});reveals.forEach(el=>observer.observe(el));}else reveals.forEach(el=>el.classList.add("is-visible"));
+  document.querySelectorAll("[data-service]").forEach(link=>link.addEventListener("click",()=>{const select=document.querySelector("#service");if(select)select.value=link.dataset.service||"";}));
+  document.querySelectorAll("[data-filter]").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll("[data-filter]").forEach(b=>{b.classList.toggle("active",b===button);b.setAttribute("aria-pressed",String(b===button));});document.querySelectorAll(".project-card[data-category]").forEach(card=>{card.classList.toggle("is-hidden",button.dataset.filter!=="all"&&card.dataset.category!==button.dataset.filter);});}));
+  const year=document.querySelector("#year");if(year)year.textContent=new Date().getFullYear();
+  const form=document.querySelector("#contact-form"),feedback=document.querySelector("#form-feedback");
+  if(form)form.addEventListener("submit",async event=>{event.preventDefault();if(!form.reportValidity())return;const data=new FormData(form),name=String(data.get("name")||"").trim(),email=String(data.get("email")||"").trim(),service=String(data.get("service")||"").trim(),message=String(data.get("message")||"").trim();if(!name||!email||!service||!message){if(feedback)feedback.textContent="Completa todos los campos.";return;}const payload={name,email,service,message,website:String(data.get("website")||"")};const submit=form.querySelector("[type=submit]");if(submit)submit.disabled=true;if(feedback)feedback.textContent="Enviando solicitud…";
+    try {const response=await fetch("contact.php",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload),credentials:"same-origin"});if(response.ok){const result=await response.json();if(!result.ok)throw new Error(result.message||"No se pudo guardar la solicitud.");if(feedback)feedback.textContent="Solicitud recibida. Gracias; los datos quedaron registrados.";form.reset();return;}throw new Error("Backend no disponible");}
+    catch(_error){const text=["Hola, Axel. Quiero consultar sobre un proyecto digital.","",`Nombre: ${name}`,`Correo: ${email}`,`Servicio: ${service}`,`Detalles: ${message}`].join("\n");const phone=String(config.whatsappNumber||"").replace(/\D/g,"");if(phone){if(feedback)feedback.textContent="Abriendo WhatsApp con tu mensaje preparado…";window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`,"_blank","noopener,noreferrer");}else if(config.email){if(feedback)feedback.textContent="Abriendo tu correo con el mensaje preparado…";location.href=`mailto:${encodeURIComponent(config.email)}?subject=${encodeURIComponent(`Consulta: ${service}`)}&body=${encodeURIComponent(text)}`;}else if(feedback){feedback.textContent="El envío por base de datos requiere XAMPP. Para GitHub Pages, configura tu WhatsApp o correo en assets/site-config.js.";}}
+    finally{if(submit)submit.disabled=false;}
+  });
+})();
